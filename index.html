@@ -1,0 +1,621 @@
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Estudio: Python para Principiantes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>body { margin: 0; }</style><style>
+        :root {
+            --primary: #FFD43B;
+            --secondary: #FF8C00;
+            --text: #FFFFFF;
+            --bg: #0D1117;
+            --card-bg: #161B22;
+            --border: #30363D;
+            --link: #4DA6FF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-image: radial-gradient(circle at 10% 20%, rgba(13, 17, 23, 0.9) 0%, rgba(13, 17, 23, 1) 90%);
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 30px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .python-logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #306998 0%, #FFD43B 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--bg);
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(255, 212, 59, 0.3);
+        }
+        
+        .subtitle {
+            color: var(--secondary);
+            font-size: 1.2rem;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 212, 59, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .card h3 {
+            color: var(--secondary);
+            margin: 20px 0 12px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+            margin: 12px 0;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        li:before {
+            content: "•";
+            color: var(--primary);
+            font-size: 1.4rem;
+            position: absolute;
+            left: 0;
+            top: -4px;
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .code {
+            background-color: rgba(48, 54, 61, 0.5);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-family: 'Courier New', Courier, monospace;
+            border-left: 3px solid var(--primary);
+            overflow-x: auto;
+            line-height: 1.8;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        
+        .author {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .license {
+            margin-top: 10px;
+            font-style: italic;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--bg);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 15px;
+            transition: transform 0.2s ease;
+            font-size: 1.1rem;
+        }
+        
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .definition {
+            background: rgba(77, 166, 255, 0.1);
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 3px solid var(--link);
+        }
+        
+        .web-resource {
+            display: block;
+            color: var(--link);
+            margin: 10px 0;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+        
+        .web-resource:hover {
+            background: rgba(77, 166, 255, 0.2);
+            text-decoration: underline;
+        }
+        
+        .web-resource i {
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .resource-container {
+            margin: 20px 0 10px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                margin-bottom: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <div class="python-logo">Py</div>
+            <div>
+                <h1>Guía de Estudio: Python para Principiantes</h1>
+                <p class="subtitle">Edición Ampliada con Recursos Web</p>
+            </div>
+        </div>
+        <button class="download-btn" onclick="downloadGuide()">
+            <i class="fas fa-download"></i>
+            Descargar Guía Completa
+        </button>
+    </div>
+    
+    <div class="dashboard">
+        <div class="card" style="opacity: 1; transform: translateY(0px);">
+            <h2><i class="fas fa-star"></i> Conceptos Fundamentales</h2>
+            <p>Python es un lenguaje de programación de alto nivel conocido por su sintaxis clara y legible, que favorece la productividad y la legibilidad del código.</p>
+            
+            <div class="definition">
+                <p><span class="highlight">Alto nivel:</span> Python abstrae los detalles del hardware, permitiendo concentrarse en la lógica de la aplicación en lugar de la gestión de memoria o recursos del sistema.</p>
+                <p><span class="highlight">Interpretado:</span> El código se ejecuta línea por línea por un intérprete, sin necesidad de compilación previa, lo que facilita el desarrollo y depuración.</p>
+                <p><span class="highlight">Multiparadigma:</span> Soporta programación orientada a objetos, estructurada, funcional y aspectos, ofreciendo flexibilidad en el enfoque de desarrollo.</p>
+            </div>
+            
+            <h3><i class="fas fa-bolt"></i> Características Principales</h3>
+            <ul>
+                <li><span class="highlight">Todo es un objeto:</span> En Python, incluso funciones, módulos y tipos primitivos son objetos con propiedades y métodos</li>
+                <li><span class="highlight">Tipado dinámico:</span> Las variables pueden cambiar de tipo durante la ejecución sin declaración explícita</li>
+                <li><span class="highlight">Gestión automática de memoria:</span> Incluye recolección de basura para liberar recursos no utilizados</li>
+                <li><span class="highlight">Comunidad activa:</span> Más de 200,000 paquetes en PyPI para extender funcionalidades</li>
+                <li><span class="highlight">Multiplataforma:</span> Corre en Windows, macOS, Linux, e incluso en dispositivos embebidos</li>
+            </ul>
+            
+            <div class="resource-container">
+                <div class="section-title"><i class="fas fa-link"></i> Recursos Web</div>
+                <a href="https://docs.python.org/3/tutorial/" target="_blank" class="web-resource">
+                    <i class="fas fa-book"></i> Tutorial Oficial de Python
+                </a>
+                <a href="https://wiki.python.org/moin/BeginnersGuide" target="_blank" class="web-resource">
+                    <i class="fas fa-graduation-cap"></i> Guía para Principiantes
+                </a>
+                <a href="https://realpython.com/" target="_blank" class="web-resource">
+                    <i class="fas fa-laptop-code"></i> Real Python - Tutoriales Prácticos
+                </a>
+            </div>
+        </div>
+        
+        <div class="card" style="opacity: 1; transform: translateY(0px);">
+            <h2><i class="fas fa-code"></i> Elementos del Lenguaje</h2>
+            
+            <h3><i class="fas fa-cubes"></i> Tipos de Datos</h3>
+            <div class="definition">
+                <p>Python tiene varios tipos de datos integrados. Los más comunes incluyen:</p>
+            </div>
+            <ul>
+                <li><span class="highlight">Cadenas (str):</span> Secuencias de caracteres Unicode. Ej: <span class="code">texto = "¡Hola Mundo!"</span></li>
+                <li><span class="highlight">Números (int, float):</span> Enteros y decimales. Ej: <span class="code">edad = 35; precio = 19.99</span></li>
+                <li><span class="highlight">Booleanos (bool):</span> Valores de verdad (True/False). Ej: <span class="code">activo = True</span></li>
+                <li><span class="highlight">Colecciones:</span>
+                    <ul>
+                        <li><span class="highlight">Listas:</span> Colecciones ordenadas y mutables <span class="code">[1, "dos", True]</span></li>
+                        <li><span class="highlight">Tuplas:</span> Colecciones ordenadas e inmutables <span class="code">(1, "dos", True)</span></li>
+                        <li><span class="highlight">Diccionarios:</span> Pares clave-valor <span class="code">{"nombre": "Ana", "edad": 30}</span></li>
+                        <li><span class="highlight">Conjuntos:</span> Colecciones no ordenadas de elementos únicos <span class="code">{1, 2, 3}</span></li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3><i class="fas fa-project-diagram"></i> Estructuras de Control</h3>
+            <div class="code">
+                # Condicional if-elif-else<br>
+                edad = 18<br>
+                if edad &lt; 18:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print("Menor de edad")<br>
+                elif edad == 18:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print("Recién cumplido")<br>
+                else:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print("Mayor de edad")<br><br>
+                
+                # Bucle for<br>
+                for i in range(5):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print(f"Valor: {i}")<br><br>
+                
+                # Bucle while<br>
+                contador = 0<br>
+                while contador &lt; 3:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print(contador)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;contador += 1
+            </div>
+            
+            <div class="resource-container">
+                <div class="section-title"><i class="fas fa-link"></i> Recursos Web</div>
+                <a href="https://docs.python.org/3/library/stdtypes.html" target="_blank" class="web-resource">
+                    <i class="fas fa-book"></i> Tipos de Datos Estándar
+                </a>
+                <a href="https://www.w3schools.com/python/python_conditions.asp" target="_blank" class="web-resource">
+                    <i class="fas fa-code"></i> Condicionales en Python
+                </a>
+                <a href="https://realpython.com/python-while-loop/" target="_blank" class="web-resource">
+                    <i class="fas fa-sync-alt"></i> Bucles While en Python
+                </a>
+            </div>
+        </div>
+        
+        <div class="card" style="opacity: 1; transform: translateY(0px);">
+            <h2><i class="fas fa-cogs"></i> Funciones y Módulos</h2>
+            
+            <h3><i class="fas fa-function"></i> Funciones Definidas</h3>
+            <div class="code">
+                # Definición básica<br>
+                def calcular_iva(precio, tasa=0.21):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;"""Calcula el IVA de un producto"""<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;iva = precio * tasa<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;total = precio + iva<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;return total<br><br>
+                
+                # Llamada a función<br>
+                total_pagar = calcular_iva(100)<br>
+                print(f"Total: {total_pagar:.2f}€")
+            </div>
+            
+            <div class="definition">
+                <p><span class="highlight">Parámetros:</span></p>
+                <ul>
+                    <li><span class="highlight">Por omisión:</span> Valores predeterminados para parámetros no obligatorios</li>
+                    <li><span class="highlight">Keywords:</span> Especificar parámetros por nombre en lugar de posición</li>
+                    <li><span class="highlight">*args:</span> Recibir múltiples argumentos posicionales como tupla</li>
+                    <li><span class="highlight">**kwargs:</span> Recibir múltiples argumentos de palabra clave como diccionario</li>
+                </ul>
+            </div>
+            
+            <h3><i class="fas fa-box-open"></i> Módulos y Paquetes</h3>
+            <div class="definition">
+                <p>Los módulos permiten organizar el código en archivos reutilizables:</p>
+                <ul>
+                    <li><span class="highlight">Módulo:</span> Archivo .py que contiene definiciones y declaraciones</li>
+                    <li><span class="highlight">Paquete:</span> Directorio que contiene múltiples módulos y un archivo __init__.py</li>
+                    <li><span class="highlight">Librería estándar:</span> Más de 200 módulos incluidos con Python</li>
+                </ul>
+            </div>
+            <div class="code">
+                # Importar módulo completo<br>
+                import math<br>
+                print(math.sqrt(25))<br><br>
+                
+                # Importar función específica<br>
+                from datetime import date<br>
+                hoy = date.today()<br><br>
+                
+                # Crear alias<br>
+                import numpy as np<br>
+                array = np.array([1, 2, 3])
+            </div>
+            
+            <div class="resource-container">
+                <div class="section-title"><i class="fas fa-link"></i> Recursos Web</div>
+                <a href="https://docs.python.org/3/tutorial/modules.html" target="_blank" class="web-resource">
+                    <i class="fas fa-cube"></i> Módulos en Python
+                </a>
+                <a href="https://realpython.com/python-modules-packages/" target="_blank" class="web-resource">
+                    <i class="fas fa-box"></i> Paquetes en Python
+                </a>
+                <a href="https://docs.python.org/3/library/index.html" target="_blank" class="web-resource">
+                    <i class="fas fa-book-open"></i> Librería Estándar de Python
+                </a>
+            </div>
+        </div>
+        
+        <div class="card" style="opacity: 1; transform: translateY(0px);">
+            <h2><i class="fas fa-object-group"></i> Programación Orientada a Objetos</h2>
+            
+            <h3><i class="fas fa-shapes"></i> Conceptos Clave</h3>
+            <div class="definition">
+                <p>La POO organiza el código en "objetos" que combinan datos y funcionalidad:</p>
+            </div>
+            <ul>
+                <li><span class="highlight">Clase:</span> Plano para crear objetos (define atributos y métodos)</li>
+                <li><span class="highlight">Objeto:</span> Instancia concreta de una clase</li>
+                <li><span class="highlight">Atributos:</span> Datos asociados a un objeto (propiedades)</li>
+                <li><span class="highlight">Métodos:</span> Funciones asociadas a un objeto (comportamientos)</li>
+                <li><span class="highlight">Constructor (__init__):</span> Método especial que inicializa nuevos objetos</li>
+                <li><span class="highlight">Herencia:</span> Mecanismo para crear nuevas clases basadas en existentes</li>
+            </ul>
+            
+            <h3><i class="fas fa-code"></i> Ejemplo Práctico</h3>
+            <div class="code">
+                class Vehiculo:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, marca, modelo):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.marca = marca<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.modelo = modelo<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.velocidad = 0<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def acelerar(self, incremento):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.velocidad += incremento<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"Acelerando a {self.velocidad} km/h")<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def frenar(self, decremento):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.velocidad -= decremento<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(f"Reduciendo a {self.velocidad} km/h")<br><br>
+                
+                class Coche(Vehiculo):  # Herencia<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def __init__(self, marca, modelo, num_puertas):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;super().__init__(marca, modelo)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.num_puertas = num_puertas<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;def abrir_puertas(self):<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print("Abriendo puertas")<br><br>
+                
+                # Uso<br>
+                mi_coche = Coche("Toyota", "Corolla", 4)<br>
+                mi_coche.acelerar(30)<br>
+                mi_coche.abrir_puertas()
+            </div>
+            
+            <div class="resource-container">
+                <div class="section-title"><i class="fas fa-link"></i> Recursos Web</div>
+                <a href="https://realpython.com/python3-object-oriented-programming/" target="_blank" class="web-resource">
+                    <i class="fas fa-object-ungroup"></i> POO en Python
+                </a>
+                <a href="https://www.programiz.com/python-programming/inheritance" target="_blank" class="web-resource">
+                    <i class="fas fa-sitemap"></i> Herencia en Python
+                </a>
+                <a href="https://www.geeksforgeeks.org/python-classes-and-objects/" target="_blank" class="web-resource">
+                    <i class="fas fa-shapes"></i> Clases y Objetos
+                </a>
+            </div>
+        </div>
+        
+        <div class="card" style="opacity: 1; transform: translateY(0px);">
+            <h2><i class="fas fa-file"></i> Trabajo con Archivos</h2>
+            
+            <h3><i class="fas fa-folder-open"></i> Modos de Apertura</h3>
+            <div class="definition">
+                <p>Python permite diferentes modos de acceso a archivos:</p>
+            </div>
+            <ul>
+                <li><span class="highlight">'r':</span> Lectura (predeterminado)</li>
+                <li><span class="highlight">'w':</span> Escritura (sobrescribe el archivo existente)</li>
+                <li><span class="highlight">'x':</span> Creación exclusiva (falla si el archivo existe)</li>
+                <li><span class="highlight">'a':</span> Append (agrega al final sin borrar contenido)</li>
+                <li><span class="highlight">'b':</span> Modo binario (imágenes, ejecutables, etc.)</li>
+                <li><span class="highlight">'t':</span> Modo texto (predeterminado)</li>
+                <li><span class="highlight">'+':</span> Lectura y escritura</li>
+            </ul>
+            
+            <h3><i class="fas fa-code"></i> Operaciones Básicas</h3>
+            <div class="code">
+                # Escritura básica<br>
+                with open('datos.txt', 'w') as archivo:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;archivo.write("Línea 1\n")<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;archivo.write("Línea 2\n")<br><br>
+                
+                # Lectura completa<br>
+                with open('datos.txt', 'r') as archivo:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;contenido = archivo.read()<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;print(contenido)<br><br>
+                
+                # Lectura línea por línea<br>
+                with open('datos.txt', 'r') as archivo:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;for linea in archivo:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print(linea.strip()))
+            </div>
+            
+            <div class="definition">
+                <p><span class="highlight">Manejo de contexto (with):</span> Garantiza que los archivos se cierren correctamente después de su uso, incluso si ocurren excepciones.</p>
+            </div>
+            
+            <div class="resource-container">
+                <div class="section-title"><i class="fas fa-link"></i> Recursos Web</div>
+                <a href="https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files" target="_blank" class="web-resource">
+                    <i class="fas fa-file-alt"></i> Manejo de Archivos en Python
+                </a>
+                <a href="https://realpython.com/read-write-files-python/" target="_blank" class="web-resource">
+                    <i class="fas fa-file-code"></i> Lectura/Escritura de Archivos
+                </a>
+                <a href="https://www.w3schools.com/python/python_file_handling.asp" target="_blank" class="web-resource">
+                    <i class="fas fa-file-contract"></i> Manejo de Archivos para Principiantes
+                </a>
+            </div>
+        </div>
+        
+        <div class="card" style="opacity: 1; transform: translateY(0px);">
+            <h2><i class="fas fa-boxes"></i> Módulos Estándar Útiles</h2>
+            
+            <h3><i class="fas fa-microchip"></i> Sistema y OS</h3>
+            <ul>
+                <li><span class="highlight">os:</span> Interacción con el sistema operativo (archivos, directorios, variables de entorno)</li>
+                <li><span class="highlight">sys:</span> Acceso a parámetros del intérprete y funcionalidades del sistema</li>
+                <li><span class="highlight">subprocess:</span> Ejecución de procesos externos y comandos del sistema</li>
+                <li><span class="highlight">shutil:</span> Operaciones de alto nivel en archivos y colecciones de archivos</li>
+            </ul>
+            
+            <h3><i class="fas fa-tools"></i> Desarrollo</h3>
+            <ul>
+                <li><span class="highlight">datetime:</span> Manipulación de fechas y horas</li>
+                <li><span class="highlight">json:</span> Codificación y decodificación de datos JSON</li>
+                <li><span class="highlight">re:</span> Operaciones con expresiones regulares</li>
+                <li><span class="highlight">logging:</span> Sistema flexible de registro de eventos</li>
+            </ul>
+            
+            <h3><i class="fas fa-globe"></i> Internet y Redes</h3>
+            <ul>
+                <li><span class="highlight">urllib:</span> Manejo de URLs y solicitudes HTTP</li>
+                <li><span class="highlight">socket:</span> Interfaz de bajo nivel para comunicaciones de red</li>
+                <li><span class="highlight">smtplib:</span> Cliente SMTP para enviar correos electrónicos</li>
+                <li><span class="highlight">http.server:</span> Servidores HTTP básicos</li>
+            </ul>
+            
+            <h3><i class="fas fa-random"></i> Utilidades</h3>
+            <ul>
+                <li><span class="highlight">random:</span> Generación de números pseudoaleatorios</li>
+                <li><span class="highlight">math:</span> Funciones matemáticas y constantes</li>
+                <li><span class="highlight">itertools:</span> Funciones para crear iteradores eficientes</li>
+                <li><span class="highlight">collections:</span> Contenedores especializados de datos</li>
+            </ul>
+            
+            <div class="resource-container">
+                <div class="section-title"><i class="fas fa-link"></i> Recursos Web</div>
+                <a href="https://docs.python.org/3/library/os.html" target="_blank" class="web-resource">
+                    <i class="fas fa-desktop"></i> Módulo os
+                </a>
+                <a href="https://realpython.com/python-datetime/" target="_blank" class="web-resource">
+                    <i class="far fa-calendar-alt"></i> Manejo de Fechas y Horas
+                </a>
+                <a href="https://docs.python.org/3/library/json.html" target="_blank" class="web-resource">
+                    <i class="fas fa-file-code"></i> Trabajar con JSON
+                </a>
+                <a href="https://docs.python.org/3/library/random.html" target="_blank" class="web-resource">
+                    <i class="fas fa-dice"></i> Generar Valores Aleatorios
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>Resumen basado en el libro <span class="author">"Python para Principiantes"</span> de Eugenia Bahit</p>
+        <p class="license">Distribuido bajo licencia Creative Commons Atribución-NoComercial-CompartirIgual 3.0</p>
+        <p>©2012 Eugenia Bahit | www.eugeniabahit.com</p>
+        <p>Recursos adicionales agregados para enriquecimiento educativo</p>
+    </div>
+
+    <script>
+        function downloadGuide() {
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'guia-python-principiantes-ampliada.html';
+            document.body.appendChild(a);
+            a.click();
+            
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 100);
+        }
+        
+        // Animación sutil al cargar
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 150 * index);
+            });
+        });
+    </script>
+
+</body></html>
